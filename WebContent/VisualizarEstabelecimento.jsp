@@ -44,7 +44,7 @@
                            <p><strong>Endereço</strong>
                             </p>
                             <p>
-                                ${estabelecimento.endereço}
+                                ${estabelecimento.endereco}
                             </p>
                         </div>
                         <div class="col-md-12">
@@ -68,22 +68,34 @@
                                 ${estabelecimento.email }
                             </p>
                         </div>
-                               <div class="col-md-6">
+                               <div class="col-md-12">
                             <p><strong>Site</strong>
                             </p>
                             <p>
                                 ${estabelecimento.site }
                             </p>
-                        </div>             
+                        </div> 
+                             <div class="col-md-12">
+                            <p><strong>Categoria</strong>
+                            </p>
+                            <p>
+                                ${categoria.nome }
+                            </p>
+                        </div>  
+                             
+                                  
                     <hr />
              
-                    <div id="actions" class="row">
+                         <div id="actions" class="row">
                         <div class="col-md-12">
                             <a href="controller.do?command=EditarEstabelecimento&id=${estabelecimento.id }" class="btn btn-primary">Editar</a>
-                            <a href="ListarEstabelecimento.jsp" class="btn btn-default">Voltar</a>
+							<a class="btn btn-primary" href="controller.do?command=EditarEstabelecimento&id=${estabelecimento.id }">Avaliar</a>
+							<a href="ListarEstabelecimento.jsp" class="btn btn-default">Voltar</a>
+							                        
                         </div>
                     </div>
                 </div>
+
                 <script src="js/jquery.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
         </body>

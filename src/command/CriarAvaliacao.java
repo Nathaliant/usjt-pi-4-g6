@@ -1,7 +1,7 @@
 package command;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Avaliacao;
+import model.Usuario;
 import service.AvaliacaoService;
+import service.EstabelecimentoService;
 
 public class CriarAvaliacao implements Command
 {
@@ -18,6 +20,9 @@ public class CriarAvaliacao implements Command
 	@Override
 	public void executar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+
+		// service estabelecimento
+		EstabelecimentoService es = new EstabelecimentoService();
 		request.setCharacterEncoding("UTF-8");
 		// dados da avaliacÃ£o
 		String aId = request.getParameter("aId");
@@ -25,7 +30,7 @@ public class CriarAvaliacao implements Command
 		String aNotaSanitarioCadeirante = request.getParameter("aNotaSanitarioCadeirante");
 		String aNotaInstrucaoBraile = request.getParameter("aNotaInstrucaoBraile");
 		String aNotaSinalizacaoPiso = request.getParameter("aNotaSinalizacaoPiso");
-//		String aNotaGeral = request.getParameter("aNotaGeral");
+		// String aNotaGeral = request.getParameter("aNotaGeral");
 		String aComentario = request.getParameter("aComentario");
 		int id = -1;
 		try
@@ -35,20 +40,20 @@ public class CriarAvaliacao implements Command
 		{
 
 		}
+		// abre a session
+		HttpSession session = request.getSession();
 
-		
-		//dados extras ESTABELECIMENTO
-		int eId=1;
-		
-		//dados extras USUARIO
-		int uId=1;
-		
-		//dados extras USUARIO
-		int cId=1;
-		
-		
-				
-		//Instanciando o JavaBean Avaliacao
+		// dados extras ESTABELECIMENTO
+		int eId = Integer.parseInt(request.getParameter("eId"));
+
+		// dados extras USUARIO
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		int uId = usuario.getId();
+
+		// dados extras USUARIO
+		int cId = es.retornaIdCategoria(eId);
+
+		// Instanciando o JavaBean Avaliacao
 
 		Avaliacao avaliacao = new Avaliacao();
 		avaliacao.setId(id);
@@ -56,8 +61,8 @@ public class CriarAvaliacao implements Command
 		avaliacao.setNotaSanitarioCadeirante(Integer.parseInt(aNotaSanitarioCadeirante));
 		avaliacao.setNotaInstrucaoBraile(Integer.parseInt(aNotaInstrucaoBraile));
 		avaliacao.setNotaSinalizacaoPiso(Integer.parseInt(aNotaSinalizacaoPiso));
-//		avaliacao.setNotaGeral(Double.parseDouble(aNotaGeral));
-		avaliacao.setComentario(aComentario );
+		// avaliacao.setNotaGeral(Double.parseDouble(aNotaGeral));
+		avaliacao.setComentario(aComentario);
 		avaliacao.setId_Estabelecimento(eId);
 		avaliacao.setId_Usuario(uId);
 		avaliacao.setId_Categoria(cId);
@@ -65,19 +70,18 @@ public class CriarAvaliacao implements Command
 		// Instanciando o service
 		AvaliacaoService as = new AvaliacaoService();
 		RequestDispatcher view = null;
-		HttpSession session = request.getSession();
-		
-		//Gerando média
-		double media = avaliacao.getNotaAcessoCadeirante()+avaliacao.getNotaInstrucaoBraile()+avaliacao.getNotaSanitarioCadeirante()+avaliacao.getNotaSinalizacaoPiso();
-		media = media/4;
+
+		double media = avaliacao.getNotaAcessoCadeirante() + avaliacao.getNotaInstrucaoBraile()
+				+ avaliacao.getNotaSanitarioCadeirante() + avaliacao.getNotaSinalizacaoPiso();
+		media = media / 4;
 		avaliacao.setNotaGeral(media);
 		as.criar(avaliacao);
-			
-	
+		ArrayList<Avaliacao> lista = new ArrayList<>();
+		lista.add(avaliacao);
+
 		session.setAttribute("avaliacao", avaliacao);
 		view = request.getRequestDispatcher("AlterarAvaliacao.jsp");
 
-		
 		view.forward(request, response);
 	}
 

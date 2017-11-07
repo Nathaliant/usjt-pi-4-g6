@@ -18,12 +18,12 @@
 
 
 <!-- verifica se há um usuário logado. -->
-<%-- 
+ 
 <c:if test="${empty usuario}">
     <c:redirect url="login.jsp" />
 </c:if>
- --%>  
-    
+
+
     
     <title>Avaliar Estabelecimento</title>
  
@@ -35,7 +35,7 @@
     
     
     <form name="form1" action="controller.do" method="post" onsubmit="return validar()" >
-    
+    <input name="eId" value="${avaliacao.id_Estabelecimento }" type="hidden">
       
     <div>
     	<div  id="aNotaAcessoCadeirante" >
@@ -48,10 +48,8 @@
 					<option value="3">3</option>
 					<option value="2">2</option>
 					<option value="1">1</option>
-				</select>
-				
+				</select>	
 			</p>
-    	
 		</div> 
 	</div>	   
 
@@ -69,7 +67,6 @@
 					<option value="1">1</option>
 				</select>
 			</p>
-    	
 		</div> 
 	</div>	  
 	
@@ -103,7 +100,6 @@
 					<option value="1">1</option>
 				</select>
 			</p>
-    	
 		</div> 
 	</div>	  
 	    
@@ -114,8 +110,9 @@
     <br>
     <div>
     	
-    	<button type="submit" name="command" value="CriarAvaliacao" >Cadastrar</button>
+    	<button type="submit" name="command" value="CriarAvaliacao" >Avaliar</button>
     	
+
     </div>
     </form>
     
