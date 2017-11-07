@@ -10,105 +10,106 @@
 <link href="assets/css/meus-dados.css" rel="stylesheet" />
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link href="assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
+<!--  Arquivo de inclusao padrao de JS e CSS  -->
+<jsp:include page="config.jsp" />
 
 <div class="card">
 	<div class="card-header" data-background-color="blue">
-		<h4 class="title">Meus dados</h4>
-		<p class="category">Atualize seus dados</p>
+		<h4 class="title">Estabelecimentos</h4>
+		<p class="category">Veja todos os estabelecimentos já avaliados</p>
 	</div>
 	<div class="card-content">
-		<form action="controller.do" method="post">
-			<div class="row">
-				<div class="col-xs-8">
-					<div class="row">
-						<div class="col-xs-6">
-							<input style="display: none;" type="text" name="id" id="id"
-								value="${usuario.id}">
-							<div class="form-group label-floating is-empty">
-								<label class="control-label">Nome</label> <input type="text"
-									class="form-control" name="nome" id="nome"
-									value="${usuario.nome}" /> <span class="material-input"></span>
-							</div>
-						</div>
-						<div class="col-xs-6">
-							<div class="form-group label-floating is-empty">
-								<label class="control-label">Sobrenome</label> <input
-									type="text" class="form-control" name="sobrenome"
-									id="sobrenome" value="${usuario.sobrenome}" /> <span
-									class="material-input"></span>
-							</div>
+		<div id="main">
+			<form action="controller.do" method="post">
+				<div id="top" class="row">
+					<div class="col-xs-9">
+						<div class="input-group h2">
+							<input name="data[search]" class="form-control" id="search"
+								type="text" placeholder="Pesquisar Estabelecimento"> <span
+								class="input-group-btn">
+								<button class="btn btn-primary btn-fab btn-fab-mini btn-round"
+									type="submit" name="command"
+									value="ListarEstabelecimentoBuscar">
+									<i class="material-icons">search</i>
+								</button>
+							</span>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="form-group label-floating is-empty">
-								<label class="control-label">E-mail (login)</label> <input
-									type="email" class="form-control" name="email" id="email"
-									value="${usuario.email}" /> <span class="material-input"></span>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-6">
-							<div class="form-group label-floating is-empty">
-								<label class="control-label">Senha</label> <input
-									type="password" class="form-control" name="senha" id="senha"
-									value="${usuario.senha}"> <span class="material-input"></span>
-							</div>
-						</div>
-					</div>
-				</div>
 
-				<div class="col-xs-4">
-					<div class="card card-profile">
-						<div class="card-avatar">
-							<!-- verifica se há uma foto de usuário, senão preenche com uma imagem default -->
-							<c:if test="${usuario.foto == ''}">
-								<img id='output' class="img" src="assets\img\profile.jpg">
-							</c:if>
-							<c:if test="${usuario.foto != ''}">
-								<img id='output' class="img" src="${usuario.foto}">
-							</c:if>
-						</div>
-						<div class="content">
-							<textarea style="display: none;" id='stringFoto' name="foto">
-								${usuario.foto}
-							</textarea>
-							<p class="card-content">
-								<input type='file' accept='image/*' class="btn"
-									onchange="openFile(event)"><br>
-							</p>
-						</div>
+					<div class="col-xs-3">
+						<a href="estabelecimento.jsp"
+							class="btn btn-primary pull-right h2">Novo Estabelecimento</a>
 					</div>
 				</div>
+				<!-- /#top -->
+			</form>
+			<hr />
+			<c:if test="${not empty lista}">
+				<div id="list" class="row">
 
-				<!-- modal footer -->
-				<!-- botões do modal -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					<button type="submit" name="command" value="EditarUsuario"
-						class="btn btn-primary">Salvar alterações</button>
+					<div class="table-responsive col-xs-12">
+						<table class="table table-striped" cellspacing="0" cellpadding="0">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nome</th>
+									<th>Endereço</th>
+									<th>Horário</th>
+									<th>Telefone</th>
+									<th>Email</th>
+									<th>Site</th>
+									<th>Categoria</th>
+									<th class="actions">Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="estabelecimento" items="${lista }">
+									<tr>
+										<td>${estabelecimento.id }</td>
+										<td>${estabelecimento.nome }</td>
+										<td>${estabelecimento.endereco }</td>
+										<td>${estabelecimento.horario }</td>
+										<td>${estabelecimento.telefone }</td>
+										<td>${estabelecimento.email }</td>
+										<td>${estabelecimento.site }</td>
+										<td>${estabelecimento.categoria.nome }</td>
+
+										<td class="actions"><a class="btn btn-info btn-xs"
+											href="controller.do?command=ListarAvaliacoesPorEstabelecimento&id=${estabelecimento.id}">Listar
+												Avaliações</a> <a class="btn btn-danger btn-xs"
+											href="controller.do?command=CriarAvaliacaoInicio&eId=${estabelecimento.id}">Avaliar</a>
+											<a class="btn btn-success btn-xs"
+											href="controller.do?command=VisualizarEstabelecimento&id=${estabelecimento.id }">Visualizar</a>
+											<a class="btn btn-warning btn-xs"
+											href="controller.do?command=EditarEstabelecimento&id=${estabelecimento.id }">Editar</a>
+
+										</td>
+									</tr>
+								</c:forEach>
+
+							</tbody>
+						</table>
+
+					</div>
 				</div>
-				<div class="alertas">
-					<!-- alerts de status -->
-					<c:if
-						test="${sessionScope.mensagem == 'Dados atualizados com sucesso.'}">
-						<div class="alert alert-success">
-							<p class="mensagem">
-								<strong>${sessionScope.mensagem}</strong>
-							</p>
-						</div>
-					</c:if>
-					<c:if test="${sessionScope.mensagem == 'Ocorreu um erro.'}">
-						<div class="alert alert-danger">
-							<p class="mensagem">
-								<strong>${sessionScope.mensagem}</strong>
-							</p>
-						</div>
-					</c:if>
+				<!-- /#list -->
+
+				<div id="bottom" class="row">
+					<div class="col-xs-12">
+						<!-- paginação ainda não foi implementada -->
+						<ul class="pagination">
+							<li class="disabled"><a>&lt; Anterior</a></li>
+							<li class="disabled"><a>1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
+						</ul>
+						<!-- /.pagination -->
+					</div>
 				</div>
-			</div>
-		</form>
+			</c:if>
+			<!-- /#bottom -->
+		</div>
 	</div>
 </div>
 
@@ -116,7 +117,6 @@
 <script src="assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="assets/js/material.min.js" type="text/javascript"></script>
-<script src="assets/js/meus-dados.js" type="text/javascript"></script>
 <!--  Charts Plugin -->
 <script src="assets/js/chartist.min.js"></script>
 <!--  Dynamic Elements plugin -->

@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=ISO-8859-1" language="java"	pageEncoding="UTF-8" import="java.sql.*" errorPage=""%>
+<%@ page contentType="text/html; charset=ISO-8859-1" language="java"
+	pageEncoding="UTF-8" import="java.sql.*" errorPage=""%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="pt-br">
@@ -12,7 +13,7 @@
 
 <!-- verifica se há um usuário logado. -->
 <c:if test="${empty usuario}">
-    <c:redirect url="login.jsp" />
+	<c:redirect url="login.jsp" />
 </c:if>
 
 
@@ -23,7 +24,7 @@
 <meta name="viewport" content="width=device-width" />
 
 <!--  Arquivo de inclusao padrao de JS e CSS  -->
-<jsp:include page="config.jsp"/>
+<jsp:include page="config.jsp" />
 
 <!--  JS  -->
 <script src="assets/js/index.js"></script>
@@ -36,8 +37,7 @@
 		<div class="sidebar" data-color="blue"
 			data-image="assets/img/sidebar-1.jpg">
 			<div class="logo">
-				<a href="index.jsp" class="simple-text"> Sem
-					Barreiras </a>
+				<a href="index.jsp" class="simple-text"> Sem Barreiras </a>
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
@@ -45,34 +45,52 @@
 							class="material-icons">location_on</i>
 							<p>Mapa</p>
 					</a></li>
-					<li><a href="javascript:void(0)" data-toggle="modal" data-target=".cadastrarEstabelecimento-modal"> <i class="material-icons">person</i>
+					<li><a href="javascript:void(0)" data-toggle="modal"
+						data-target=".cadastrarEstabelecimento-modal"> <i
+							class="material-icons">person</i>
 							<p>Inserir novo local</p>
 					</a></li>
 					<li><a href=""> <i class="material-icons">content_paste</i>
 							<p>Meus locais</p>
 					</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#meus-dados"> <i class="material-icons">face</i>
+					<li><a href="#" data-toggle="modal"
+						data-target="#listar-estabelecimento"> <i
+							class="material-icons">location_city</i>
+							<p>Listar todos os locais</p>
+					</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#meus-dados">
+							<i class="material-icons">face</i>
 							<p>Meus dados</p>
 					</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="main-panel">
-			<input id="pac-input" class="controls" type="text" placeholder="Buscar Endereço">
+			<input id="pac-input" class="controls" type="text"
+				placeholder="Buscar Endereço">
 			<div id="map"></div>
 		</div>
 		<div class="modal fade cadastrarEstabelecimento-modal" tabindex="-1"
 			role="dialog" aria-labelledby="cadastrarEstabelecimento">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
-					<jsp:include page="estabelecimento.jsp"/>
+					<jsp:include page="estabelecimento.jsp" />
 				</div>
 			</div>
 		</div>
+		<!-- import do modal de meus dados-->
 		<div class="modal fade" id="meus-dados">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
-					<jsp:include page="meus-dados.jsp"/>
+					<jsp:include page="meus-dados.jsp" />
+				</div>
+			</div>
+		</div>
+		<!-- import do modal de listar locais -->
+		<div class="modal fade" id="listar-estabelecimento">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<jsp:include page="listar-estabelecimento.jsp" />
 				</div>
 			</div>
 		</div>

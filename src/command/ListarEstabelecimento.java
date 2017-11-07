@@ -40,7 +40,7 @@ public class ListarEstabelecimento implements Command
 			session.setAttribute("lista", null);
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ListarEstabelecimento.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("listar-estabelecimento.jsp");
 		dispatcher.forward(request, response);
 
 	}

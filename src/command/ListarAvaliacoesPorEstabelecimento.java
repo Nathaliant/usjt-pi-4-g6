@@ -33,7 +33,7 @@ public class ListarAvaliacoesPorEstabelecimento implements Command
 		lista = lAS.listarAvaliacao(idEstabelecimento);
 		session.setAttribute("lista", lista);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ListarAvaliacoes.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("listar-avaliacoes.jsp");
 		dispatcher.forward(request, response);
 
 	}

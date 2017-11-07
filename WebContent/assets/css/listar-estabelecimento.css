@@ -1,0 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.alertas {
+	margin: 10px;
+}
+
+input[type=file] {
+	width: 100%;
+}
+
+.table>thead>tr>th {
+	font-weight: bold;
+	text-align: center;
+}

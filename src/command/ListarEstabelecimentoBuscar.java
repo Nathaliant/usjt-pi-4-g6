@@ -31,7 +31,7 @@ public class ListarEstabelecimentoBuscar implements Command
 		}
 		session.setAttribute("lista", lista);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ListarEstabelecimento.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("listar-estabelecimento.jsp");
 		dispatcher.forward(request, response);
 	}
 }

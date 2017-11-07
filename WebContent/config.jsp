@@ -19,3 +19,5 @@
 <script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
 <script src="assets/js/material.min.js" type="text/javascript"></script>
 <script src="assets/js/material-dashboard.js"></script>
+<script src="assets/js/arrive.min.js"></script>
+<script src="assets/js/chartist.min.js"></script>

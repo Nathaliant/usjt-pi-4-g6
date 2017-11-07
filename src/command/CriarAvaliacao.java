@@ -80,7 +80,7 @@ public class CriarAvaliacao implements Command
 		lista.add(avaliacao);
 
 		session.setAttribute("avaliacao", avaliacao);
-		view = request.getRequestDispatcher("AlterarAvaliacao.jsp");
+		view = request.getRequestDispatcher("index.jsp");
 
 		view.forward(request, response);
 	}
