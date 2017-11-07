@@ -13,6 +13,7 @@ $(document).ready(function() {
 
 });
 
+
 function consoleInfo(id) {
 	$("#cadastroEndereco").val(markers[id].place_obj.formatted_address);
 	var place = markers[id].place_obj;

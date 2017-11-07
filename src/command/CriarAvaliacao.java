@@ -79,7 +79,7 @@ public class CriarAvaliacao implements Command
 		ArrayList<Avaliacao> lista = new ArrayList<>();
 		lista.add(avaliacao);
 
-		session.setAttribute("avaliacao", avaliacao);
+		//session.setAttribute("avaliacao", avaliacao);
 		view = request.getRequestDispatcher("index.jsp");
 
 		view.forward(request, response);

@@ -25,6 +25,7 @@ public class ListarEstabelecimento implements Command
 		EstabelecimentoService estabelecimento = new EstabelecimentoService();
 		ArrayList<Estabelecimento> lista = null;
 		HttpSession session = request.getSession();
+		System.out.print(acao);
 		if (acao.equals("buscar"))
 		{
 			if (chave != null && chave.length() > 0)

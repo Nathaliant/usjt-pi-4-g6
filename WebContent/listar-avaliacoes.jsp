@@ -88,9 +88,12 @@
 							<div class="row">
 								<c:forEach var="lAS" items="${lista }" varStatus="id">
 
-									<div class="cartao col-xs-3">
-										${lAS.usuario.foto } ${lAS.usuario.nome }
-										${lAS.usuario.sobrenome } <br> Nota Geral:
+									<div class="cartao col-xs-3">										
+										<div class="col-xs-12">
+											<h5>${lAS.usuario.nome} ${lAS.usuario.sobrenome}</h5>
+										</div>																			
+										<%-- ${lAS.usuario.foto }--%>										
+										 <br> Nota Geral:
 										${lAS.notaGeral } <br>
 										<div class="col-xs-12">
 											Acesso Cadeirante: <select id="star-rating-1${id.count}">

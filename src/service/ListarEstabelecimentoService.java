@@ -3,11 +3,11 @@ package service;
 import java.util.ArrayList;
 
 import model.Estabelecimento;
-import dao.ListarEstabelecimentoDAO;
+import dao.EstabelecimentoDAO;
 
 public class ListarEstabelecimentoService
 {
-	ListarEstabelecimentoDAO dao = new ListarEstabelecimentoDAO();
+	EstabelecimentoDAO dao = new EstabelecimentoDAO();
 
 	public ArrayList<Estabelecimento> listarEstabelecimento()
 	{

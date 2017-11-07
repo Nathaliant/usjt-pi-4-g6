@@ -12,7 +12,8 @@
 <link href="assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
 <!--  Arquivo de inclusao padrao de JS e CSS  -->
 <jsp:include page="config.jsp" />
-
+<!--  JS  -->
+<script src="assets/js/listar-estabelecimento.js"></script>
 <div class="card">
 	<div class="card-header" data-background-color="blue">
 		<h4 class="title">Estabelecimentos</h4>
@@ -20,16 +21,19 @@
 	</div>
 	<div class="card-content">
 		<div id="main">
-			<form action="controller.do" method="post">
+			<form id="formBuscaEst">
+				<input type="hidden" name="command"
+					value="ListarEstabelecimentoBuscar" />
 				<div id="top" class="row">
 					<div class="col-xs-9">
 						<div class="input-group h2">
-							<input name="data[search]" class="form-control" id="search"
-								type="text" placeholder="Pesquisar Estabelecimento"> <span
+							<input name="data[search]" class="form-control"
+								id="inputBuscaEstabelecimento" type="text"
+								placeholder="Pesquisar Estabelecimento"> <span
 								class="input-group-btn">
-								<button class="btn btn-primary btn-fab btn-fab-mini btn-round"
-									type="submit" name="command"
-									value="ListarEstabelecimentoBuscar">
+								<button id="btnBuscarEstabelecimento"
+									class="btn btn-primary btn-fab btn-fab-mini btn-round"
+									type="submit">
 									<i class="material-icons">search</i>
 								</button>
 							</span>
@@ -62,7 +66,7 @@
 									<th class="actions">Ações</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="tBodyBuscaEst">
 								<c:forEach var="estabelecimento" items="${lista }">
 									<tr>
 										<td>${estabelecimento.id }</td>
