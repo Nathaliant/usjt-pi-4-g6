@@ -121,7 +121,7 @@
 			</div>
 		</div>
 		<!-- import do modal de listar locais -->
-		<div class="modal fade listarEstabelecimento-modal" tabindex="-3"
+		<div class="modal fade listarEstabelecimento-modal" tabindex="-1"
 			role="dialog" aria-labelledby="istarEstabelecimento" id="listar-estabelecimento">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">

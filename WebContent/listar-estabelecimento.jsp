@@ -13,7 +13,6 @@
 <!--  Arquivo de inclusao padrao de JS e CSS  -->
 <jsp:include page="config.jsp" />
 <!--  JS  -->
-<script src="assets/js/listar-estabelecimento.js"></script>
 
 <c:if test="${not empty lista}">
 	<div id="list" class="row">
