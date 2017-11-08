@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.*;
+
 import model.Estabelecimento;
 import service.EstabelecimentoService;
 
@@ -28,10 +30,21 @@ public class ListarEstabelecimentoBuscar implements Command
 		} else
 		{
 			lista = estabelecimento.listarEstabelecimento();
-		}
-		session.setAttribute("lista", lista);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("listar-estabelecimento.jsp");
-		dispatcher.forward(request, response);
+		} 	
+		session.setAttribute("lista", lista);    
+	    String objList = toJSON(lista);
+	    System.out.println(objList);
+        response.setContentType("application/json");
+        response.getWriter().write(objList);
+        RequestDispatcher dispatcher = null;
+        dispatcher = request.getRequestDispatcher("listar-estabelecimento.jsp");
+	}	
+	String toJSON(ArrayList<Estabelecimento> lista) {
+	    Gson gson = new Gson();
+	    StringBuilder sb = new StringBuilder();
+	    for(Estabelecimento e : lista) {
+	        sb.append(gson.toJson(e));
+	    }
+	    return sb.toString();
 	}
 }

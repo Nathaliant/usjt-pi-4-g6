@@ -14,9 +14,10 @@ public class EstabelecimentoService
 		dao = new EstabelecimentoDAO();
 	}
 
-	public void criar(Estabelecimento estabelecimento)
+	public Estabelecimento criar(Estabelecimento estabelecimento)
 	{
 		dao.criar(estabelecimento);
+		return estabelecimento;
 	}
 
 	public void atualizar(Estabelecimento estabelecimento)
