@@ -1,14 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.form-group label.control-label{
+.form-group label.control-label {
 	font-size: 15px;
 }
-.cartao{
+
+.cartao {
 	display: inline-block;
-    position: relative;
-    margin: 25px 0;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.33);
-    border-radius: 3px;
-    color: rgba(0, 0, 0, 0.87);
-    background: #fff;
+	position: relative;
+	margin: 10px 0;
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.33);
+	border-radius: 3px;
+	color: rgba(0, 0, 0, 0.87);
+	background: #fff;
+}
+
+.cartao-foto {
+	margin-top: 10px;
+	width: 100px;
+	height: auto;
+	margin-left: auto;
 }

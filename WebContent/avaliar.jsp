@@ -33,7 +33,7 @@
 
 	<div>
 		<div id="aNotaSanitarioCadeirante">
-			<p>
+			<p>'
 				<label id="aNotaSanitarioCadeirante">Sanitário cadeirante: </label>
 				<select id="star-rating-2" name="aNotaSanitarioCadeirante">
 					<option value="">Select a rating</option>
@@ -63,7 +63,6 @@
 
 		</div>
 	</div>
-
 	<div>
 		<div id="aNotaSinalizacaoPiso">
 			<p>
@@ -79,7 +78,6 @@
 			</p>
 		</div>
 	</div>
-
 	<br>
 	<div>
 		<textarea class="form-control" placeholder="Comentário"

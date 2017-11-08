@@ -18,7 +18,7 @@
 <c:if test="${not empty lista}">
 	<div id="list" class="row">
 		<div class="table-responsive col-xs-12">
-			<table class="table table-striped" cellspacing="0" cellpadding="0">
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -46,13 +46,13 @@
 
 							<td class="actions"><a class="btn btn-info btn-xs"
 								href="controller.do?command=ListarAvaliacoesPorEstabelecimento&id=${estabelecimento.id}">Listar
-									Avaliações</a> <a class="btn btn-danger btn-xs"
-								href="controller.do?command=CriarAvaliacaoInicio&eId=${estabelecimento.id}">Avaliar</a>
-								<a class="btn btn-success btn-xs"
-								href="controller.do?command=VisualizarEstabelecimento&id=${estabelecimento.id }">Visualizar</a>
-								<a class="btn btn-warning btn-xs"
-								href="controller.do?command=EditarEstabelecimento&id=${estabelecimento.id }">Editar</a>
-
+									Avaliações</a> <c:if test="${not empty usuario}">
+									<a class="btn btn-warning btn-xs"
+										href="controller.do?command=CriarAvaliacaoInicio&eId=${estabelecimento.id}">Avaliar</a>
+								</c:if> <!-- <a class="btn btn-success btn-xs"
+											href="controller.do?command=VisualizarEstabelecimento&id=${estabelecimento.id }">Visualizar</a>
+											<a class="btn btn-warning btn-xs"
+											href="controller.do?command=EditarEstabelecimento&id=${estabelecimento.id }">Editar</a>-->
 							</td>
 						</tr>
 					</c:forEach>
@@ -92,5 +92,3 @@
 <script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="assets/js/material-dashboard.js?v=1.2.0"></script>
-
-

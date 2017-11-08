@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
+<meta charset="utf-8"/>
 <!-- CSS     -->
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link href="assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />

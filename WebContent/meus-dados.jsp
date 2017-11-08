@@ -11,6 +11,11 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link href="assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
 
+<!-- verifica se há um usuário logado. -->
+<c:if test="${empty usuario}">
+	<c:redirect url="index.jsp" />
+</c:if>
+
 <div class="card">
 	<div class="card-header" data-background-color="blue">
 		<h4 class="title">Meus dados</h4>
@@ -60,7 +65,7 @@
 				</div>
 
 				<div class="col-xs-4">
-					<div class="card card-profile">
+					<div class="card-profile">
 						<div class="card-avatar">
 							<!-- verifica se há uma foto de usuário, senão preenche com uma imagem default -->
 							<c:if test="${usuario.foto == ''}">
@@ -94,13 +99,20 @@
 					<c:if
 						test="${sessionScope.mensagem == 'Dados atualizados com sucesso.'}">
 						<div class="alert alert-success">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							    <span aria-hidden="true">&times;</span>
+							 </button>
 							<p class="mensagem">
 								<strong>${sessionScope.mensagem}</strong>
 							</p>
+							
 						</div>
 					</c:if>
 					<c:if test="${sessionScope.mensagem == 'Ocorreu um erro.'}">
 						<div class="alert alert-danger">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							    <span aria-hidden="true">&times;</span>
+							 </button>
 							<p class="mensagem">
 								<strong>${sessionScope.mensagem}</strong>
 							</p>
