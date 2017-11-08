@@ -13,8 +13,6 @@
 <!--  Arquivo de inclusao padrao de JS e CSS  -->
 <jsp:include page="config.jsp" />
 
-
-
 <div class="card">
 	<div class="card-header" data-background-color="blue">
 		<h4 class="title">Cadastre-se</h4>
@@ -103,5 +101,12 @@
 <script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="assets/js/material-dashboard.js?v=1.2.0"></script>
+<script>
 
+$('#modalCadastro').modal({
+	  backdrop: 'static',
+	  keyboard: false
+	});
+
+</script>
 

@@ -87,4 +87,12 @@
 <!-- Material Dashboard javascript methods -->
 <script src="assets/js/material-dashboard.js?v=1.2.0"></script>
 
+<script>
 
+$('#modalLogin').modal({
+	  backdrop: 'static',
+	  keyboard: false
+	});
+
+</script>
+</html>
