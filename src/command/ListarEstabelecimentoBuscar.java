@@ -20,6 +20,7 @@ public class ListarEstabelecimentoBuscar implements Command
 	@Override
 	public void executar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		request.setCharacterEncoding("UTF-8");
 		String chave = request.getParameter("data[search]");
 		EstabelecimentoService estabelecimento = new EstabelecimentoService();
 		ArrayList<Estabelecimento> lista = null;

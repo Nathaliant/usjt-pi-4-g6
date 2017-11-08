@@ -5,7 +5,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class Logout implements Command
 {
 
@@ -14,8 +13,7 @@ public class Logout implements Command
 	{
 		request.setCharacterEncoding("UTF-8");
 		request.getSession().invalidate();
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
-
+		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
 
 }

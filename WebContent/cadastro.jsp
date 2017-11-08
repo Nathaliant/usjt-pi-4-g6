@@ -64,14 +64,20 @@
 				<!-- verifica o retorno da mensagem e exibe o alert adequado. -->
 				<c:if test="${mensagem == 'Cadastro realizado com sucesso.'}">
 					<div class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							    <span aria-hidden="true">&times;</span>
+						 </button>
 						<p class="mensagem">
-							<strong>${mensagem}</strong>
+							<strong>${mensagem}</strong> Agora clique aqui e <a href="login.jsp"><strong>faça seu login.</strong></a>
 						</p>
 					</div>
 				</c:if>
 				<c:if
 					test="${mensagem == 'Este e-mail já existe, tente outro.' || mensagem == 'Ocorreu um erro.'}">
 					<div class="alert alert-danger">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							    <span aria-hidden="true">&times;</span>
+						 </button>
 						<p class="mensagem">
 							<strong>${mensagem}</strong>
 						</p>

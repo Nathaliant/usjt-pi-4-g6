@@ -92,5 +92,3 @@
 <script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="assets/js/material-dashboard.js?v=1.2.0"></script>
-
-

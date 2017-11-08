@@ -16,10 +16,12 @@
 	<c:redirect url="index.jsp" />
 </c:if>
 
+
 <div class="card">
 	<div class="card-header" data-background-color="blue">
 		<h4 class="title">Avaliar estabelecimento</h4>
-		<p class="category">Avalie os requisitos de acessibilidade deste estabelecimento</p>
+		<p class="category">Avalie os requisitos de acessibilidade deste
+			estabelecimento</p>
 	</div>
 	<div class="card-content">
 		<form name="form1" action="controller.do" method="post"
@@ -94,12 +96,13 @@
 
 			<br>
 			<div>
-				<textarea class="form-control" placeholder="Comentário" name="aComentario"
-					id="aComentario"></textarea>
+				<textarea class="form-control" placeholder="Comentário"
+					name="aComentario" id="aComentario"></textarea>
 			</div>
 			<br>
 			<div>
-				<button  class="btn btn-primary" type="submit" name="command" value="CriarAvaliacao">Avaliar</button>
+				<button class="btn btn-primary" type="submit" name="command"
+					value="CriarAvaliacao">Avaliar</button>
 			</div>
 		</form>
 	</div>

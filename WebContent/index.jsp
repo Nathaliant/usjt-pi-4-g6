@@ -41,15 +41,14 @@
 			<div class="sidebar-wrapper">
 				<ul class="nav">
 					<!-- menu mapa -->
-					<li class="active"><a href="index.jsp"> <i
-							class="material-icons">location_on</i>
+					<li><a href="index.jsp"> <i class="material-icons">location_on</i>
 							<p>Mapa</p>
 					</a></li>
 					<!-- menu inserir novo local -->
 					<c:if test="${not empty usuario}">
 						<li><a href="javascript:void(0)" data-toggle="modal"
 							data-target=".cadastrarEstabelecimento-modal"> <i
-								class="material-icons">person</i>
+								class="material-icons">add</i>
 								<p>Inserir novo local</p>
 						</a></li>
 					</c:if>
@@ -67,6 +66,8 @@
 						</a></li>
 					</c:if>
 				</ul>
+
+
 				<!-- menu sair-->
 				<div>
 					<c:if test="${not empty usuario}">
@@ -108,6 +109,14 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<jsp:include page="meus-dados.jsp" />
+				</div>
+			</div>
+		</div>
+		<!-- import do modal de login -->
+		<div class="modal fade" id="login">
+			<div class="modal-dialog modal-md" role="document">
+				<div class="modal-content">
+					<jsp:include page="login.jsp" />
 				</div>
 			</div>
 		</div>
@@ -159,16 +168,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- import do modal de login -->
-		<div class="modal fade" id="login">
-			<div class="modal-dialog modal-sm" role="document">
-				<div class="modal-content">
-					<jsp:include page="login.jsp" />
-				</div>
-			</div>
-		</div>
+		</div>		
 	</div>
 </body>
-
 </html>

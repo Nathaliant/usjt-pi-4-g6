@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class ListarEstabelecimentoReiniciar implements Command {
+public class ListarEstabelecimentoReiniciar implements Command
+{
 
 	@Override
-	public void executar(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	public void executar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
 		HttpSession session = request.getSession();
 		session.setAttribute("lista", null);
 
-		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("ListarEstabelecimento.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ListarEstabelecimento.jsp");
 		dispatcher.forward(request, response);
 	}
 }

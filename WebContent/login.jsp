@@ -44,6 +44,10 @@
 				<!-- verifica o retorno da mensagem e exibe o alert adequado. -->
 				<c:if test="${mensagem == 'Efetuando login.'}">
 					<div class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
 						<p class="mensagem">
 							<strong>${mensagem}</strong>
 						</p>
@@ -52,6 +56,10 @@
 				<c:if
 					test="${mensagem == 'Senha inválida.' || mensagem == 'Ocorreu um erro.' || mensagem == 'Usuário não encontrado.'}">
 					<div class="alert alert-danger">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
 						<p class="mensagem">
 							<strong>${mensagem}</strong>
 						</p>
@@ -65,13 +73,14 @@
 					</div>
 				</div>
 				<p class="message">
-					Ainda não tem cadastro? <br> 
-					<a href="cadastro.jsp">	<strong>Clique aqui e cadastre-se.</strong></a>
+					Ainda não tem cadastro? <br> <a href="cadastro.jsp"> <strong>Clique
+							aqui e cadastre-se.</strong></a>
 				</p>
 			</div>
 		</form>
 	</div>
 </div>
+
 
 <!--   Core JS Files   -->
 <script src="assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -88,11 +97,9 @@
 <script src="assets/js/material-dashboard.js?v=1.2.0"></script>
 
 <script>
-
-$('#modalLogin').modal({
-	  backdrop: 'static',
-	  keyboard: false
+	$('#modalLogin').modal({
+		backdrop : 'static',
+		keyboard : false
 	});
-
 </script>
 </html>

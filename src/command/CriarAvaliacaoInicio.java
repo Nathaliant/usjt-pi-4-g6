@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Avaliacao;
-import service.AvaliacaoService;
 
 public class CriarAvaliacaoInicio implements Command
 {
@@ -18,6 +17,8 @@ public class CriarAvaliacaoInicio implements Command
 	@Override
 	public void executar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		
+		request.setCharacterEncoding("UTF-8");
 		// String aId = request.getParameter("eId");
 		/*
 		 * int aNotaAcessoCadeirante =
