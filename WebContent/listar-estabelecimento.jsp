@@ -15,71 +15,71 @@
 <!--  JS  -->
 <script src="assets/js/listar-estabelecimento.js"></script>
 
-			<c:if test="${not empty lista}">
-				<div id="list" class="row">
-					<div class="table-responsive col-xs-12">
-						<table class="table table-striped" cellspacing="0" cellpadding="0">
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th>Nome</th>
-									<th>Endereço</th>
-									<th>Horário</th>
-									<th>Telefone</th>
-									<th>Email</th>
-									<th>Site</th>
-									<th>Categoria</th>
-									<th class="actions">Ações</th>
-								</tr>
-							</thead>
-							<tbody id="tBodyBuscaEst">
-								<c:forEach var="estabelecimento" items="${lista }">
-									<tr>
-										<td>${estabelecimento.id }</td>
-										<td>${estabelecimento.nome }</td>
-										<td>${estabelecimento.endereco }</td>
-										<td>${estabelecimento.horario }</td>
-										<td>${estabelecimento.telefone }</td>
-										<td>${estabelecimento.email }</td>
-										<td>${estabelecimento.site }</td>
-										<td>${estabelecimento.categoria.nome }</td>
+<c:if test="${not empty lista}">
+	<div id="list" class="row">
+		<div class="table-responsive col-xs-12">
+			<table class="table table-striped" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Endereço</th>
+						<th>Horário</th>
+						<th>Telefone</th>
+						<th>Email</th>
+						<th>Site</th>
+						<th>Categoria</th>
+						<th class="actions">Ações</th>
+					</tr>
+				</thead>
+				<tbody id="tBodyBuscaEst">
+					<c:forEach var="estabelecimento" items="${lista }">
+						<tr>
+							<td>${estabelecimento.id }</td>
+							<td>${estabelecimento.nome }</td>
+							<td>${estabelecimento.endereco }</td>
+							<td>${estabelecimento.horario }</td>
+							<td>${estabelecimento.telefone }</td>
+							<td>${estabelecimento.email }</td>
+							<td>${estabelecimento.site }</td>
+							<td>${estabelecimento.categoria.nome }</td>
 
-										<td class="actions"><a class="btn btn-info btn-xs"
-											href="controller.do?command=ListarAvaliacoesPorEstabelecimento&id=${estabelecimento.id}">Listar
-												Avaliações</a> <a class="btn btn-danger btn-xs"
-											href="controller.do?command=CriarAvaliacaoInicio&eId=${estabelecimento.id}">Avaliar</a>
-											<a class="btn btn-success btn-xs"
-											href="controller.do?command=VisualizarEstabelecimento&id=${estabelecimento.id }">Visualizar</a>
-											<a class="btn btn-warning btn-xs"
-											href="controller.do?command=EditarEstabelecimento&id=${estabelecimento.id }">Editar</a>
+							<td class="actions"><a class="btn btn-info btn-xs"
+								href="controller.do?command=ListarAvaliacoesPorEstabelecimento&id=${estabelecimento.id}">Listar
+									Avaliações</a> <a class="btn btn-danger btn-xs"
+								href="controller.do?command=CriarAvaliacaoInicio&eId=${estabelecimento.id}">Avaliar</a>
+								<a class="btn btn-success btn-xs"
+								href="controller.do?command=VisualizarEstabelecimento&id=${estabelecimento.id }">Visualizar</a>
+								<a class="btn btn-warning btn-xs"
+								href="controller.do?command=EditarEstabelecimento&id=${estabelecimento.id }">Editar</a>
 
-										</td>
-									</tr>
-								</c:forEach>
+							</td>
+						</tr>
+					</c:forEach>
 
-							</tbody>
-						</table>
+				</tbody>
+			</table>
 
-					</div>
-				</div>
-				<!-- /#list -->
+		</div>
+	</div>
+	<!-- /#list -->
 
-				<div id="bottom" class="row">
-					<div class="col-xs-12">
-						<!-- paginação ainda não foi implementada -->
-						<ul class="pagination">
-							<li class="disabled"><a>&lt; Anterior</a></li>
-							<li class="disabled"><a>1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
-						</ul>
-						<!-- /.pagination -->
-					</div>
-				</div>
-			</c:if>
-			<!-- /#bottom -->
-		
+	<div id="bottom" class="row">
+		<div class="col-xs-12">
+			<!-- paginação ainda não foi implementada -->
+			<ul class="pagination">
+				<li class="disabled"><a>&lt; Anterior</a></li>
+				<li class="disabled"><a>1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
+			</ul>
+			<!-- /.pagination -->
+		</div>
+	</div>
+</c:if>
+<!-- /#bottom -->
+
 <!--   Core JS Files   -->
 <script src="assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>

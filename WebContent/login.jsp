@@ -20,14 +20,8 @@
 <title>Sem Barreiras | Login</title>
 </head>
 <body>
-
-
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg"
-		data-toggle="modal" data-target="#myModal">Abrir modal</button>
-
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel">
+	<div class="modal fade in" id="modaLogin" tabindex="-1" role="dialog"
+		aria-labelledby="modalLoginLabel" style="display: block; padding-left: 17px;">
 		<div class="container-fluid">
 			<div class="row">
 
@@ -107,4 +101,12 @@
 <script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="assets/js/material-dashboard.js?v=1.2.0"></script>
+<script>
+
+$('#modalLogin').modal({
+	  backdrop: 'static',
+	  keyboard: false
+	});
+
+</script>
 </html>
