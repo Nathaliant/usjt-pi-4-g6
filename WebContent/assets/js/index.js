@@ -162,7 +162,6 @@ function iniciarMapa() {
 														marker,
 														'drag',
 														function() {
-															marker.setMap(null);
 															geocoder
 																	.geocode(
 																			{

@@ -79,7 +79,7 @@
 			</div>
 		</div>
 		<!-- import do modal de meus dados-->
-		<div class="modal fade" id="meus-dados">
+		<div tabindex="-2" role="dialog" class="modal fade" id="meus-dados">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<jsp:include page="meus-dados.jsp" />
@@ -87,7 +87,8 @@
 			</div>
 		</div>
 		<!-- import do modal de listar locais -->
-		<div class="modal fade" id="listar-estabelecimento">
+		<div class="modal fade listarEstabelecimento-modal" tabindex="-3"
+			role="dialog" aria-labelledby="istarEstabelecimento" id="listar-estabelecimento">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="card">
@@ -128,7 +129,6 @@
 								<div id="tabelaEstabelecimentos">
 									<jsp:include page="listar-estabelecimento.jsp" />
 								</div>
-
 							</div>
 						</div>
 					</div>
