@@ -50,7 +50,7 @@
 							class="material-icons">person</i>
 							<p>Inserir novo local</p>
 					</a></li>
-					<li><a href=""> <i class="material-icons">content_paste</i>
+					<li><a href="#"> <i class="material-icons">content_paste</i>
 							<p>Meus locais</p>
 					</a></li>
 					<li><a href="#" data-toggle="modal"

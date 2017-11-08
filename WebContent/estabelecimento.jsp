@@ -49,7 +49,7 @@
 					<div class="form-group label-floating">
 						<label class="control-label">Endereço</label> <input
 							id="cadastroEndereco" name="txtEndereco" type="text"
-							class="form-control" value="testeEnde">
+							class="form-control" value="">
 					</div>
 				</div>
 			</div>
@@ -58,7 +58,7 @@
 					<div class="form-group label-floating">
 						<label class="control-label">Nome</label> <input
 							id="cadastroNome" name="txtNome" type="text"
-							class="form-control" value="testeNome">
+							class="form-control" value="">
 					</div>
 				</div>
 			</div>
@@ -67,7 +67,7 @@
 					<div class="form-group label-floating">
 						<label class="control-label">Aberto das:</label> <input
 							id="cadHrAbertura" name="txtHorario" type="text"
-							class="form-control hora" placeholder="Ex: 08:00" value="123">
+							class="form-control hora" placeholder="Ex: 08:00">
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -83,7 +83,7 @@
 					<div class="form-group label-floating">
 						<label class="control-label">Telefone</label> <input
 							id="txtTelefone" name="txtTelefone" type="text"
-							class="form-control" value="teste">
+							class="form-control telefone">
 					</div>
 				</div>
 			</div>
@@ -110,4 +110,6 @@
 </div>
 <script>
 
+$('.hora').mask('00:00');
+$('.telefone').mask('00000-0000');
 </script>
