@@ -55,7 +55,7 @@ public class CriarUsuario implements Command
 			session.setAttribute("uEmail", usuario.getEmail());
 			
 			
-			retornaRequest(request, response, "Cadastro realizado com sucesso.", usuario, "meus-dados.jsp");
+			retornaRequest(request, response, "Cadastro realizado com sucesso.", usuario, "cadastro.jsp");
 		} else if (emailExistente == 1)
 		{
 			// retonar string com mensagem de email repetido.

@@ -11,6 +11,11 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link href="assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
 
+<!-- verifica se há um usuário logado. -->
+<c:if test="${empty usuario}">
+	<c:redirect url="index.jsp" />
+</c:if>
+
 <div class="card">
 	<div class="card-header" data-background-color="blue">
 		<h4 class="title">Meus dados</h4>

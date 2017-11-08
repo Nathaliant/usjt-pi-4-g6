@@ -11,6 +11,11 @@
 <!--  Arquivo de inclusao padrao de JS e CSS  -->
 <jsp:include page="config.jsp" />
 
+<!-- verifica se há um usuário logado. -->
+<c:if test="${empty usuario}">
+	<c:redirect url="index.jsp" />
+</c:if>
+
 <div class="card">
 	<div class="card-header" data-background-color="blue">
 		<h4 class="title">Avaliar estabelecimento</h4>

@@ -6,16 +6,15 @@
 
 <head>
 <meta charset="utf-8" />
-<link rel="apple-touch-icon" sizes="76x76"
-	href="assets/img/apple-icon.png" />
-<link rel="icon" type="image/png" href="assets/img/favicon.png" />
+<link rel="icon" href="assets\img\favicon.ico" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 <!-- verifica se há um usuário logado. -->
+<%--
 <c:if test="${empty usuario}">
 	<c:redirect url="login.jsp" />
 </c:if>
-
+ --%>
 
 <title>Sem Barreiras | Você pode ir aonde você quiser</title>
 <meta
@@ -41,28 +40,53 @@
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
+					<!-- menu mapa -->
 					<li class="active"><a href="index.jsp"> <i
 							class="material-icons">location_on</i>
 							<p>Mapa</p>
 					</a></li>
-					<li><a href="javascript:void(0)" data-toggle="modal"
-						data-target=".cadastrarEstabelecimento-modal"> <i
-							class="material-icons">person</i>
-							<p>Inserir novo local</p>
-					</a></li>
-					<li><a href=""> <i class="material-icons">content_paste</i>
-							<p>Meus locais</p>
-					</a></li>
+					<!-- menu inserir novo local -->
+					<c:if test="${not empty usuario}">
+						<li><a href="javascript:void(0)" data-toggle="modal"
+							data-target=".cadastrarEstabelecimento-modal"> <i
+								class="material-icons">person</i>
+								<p>Inserir novo local</p>
+						</a></li>
+					</c:if>
+					<!-- menu listar todos os locais-->
 					<li><a href="#" data-toggle="modal"
 						data-target="#listar-estabelecimento"> <i
 							class="material-icons">location_city</i>
 							<p>Listar todos os locais</p>
 					</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#meus-dados">
-							<i class="material-icons">face</i>
-							<p>Meus dados</p>
-					</a></li>
+					<!-- menu meus dados-->
+					<c:if test="${not empty usuario}">
+						<li><a href="#" data-toggle="modal" data-target="#meus-dados">
+								<i class="material-icons">face</i>
+								<p>Meus dados</p>
+						</a></li>
+					</c:if>
 				</ul>
+				<!-- menu sair-->
+				<div>
+					<c:if test="${not empty usuario}">
+						<form action="controller.do" method="post">
+							<button type="submit" name="command" value="Logout"
+								class="btn btn-danger botoes-index">
+								Sair <i class="material-icons">exit_to_app</i>
+							</button>
+						</form>
+					</c:if>
+				</div>
+				<!-- menu entrar-->
+				<div>
+					<c:if test="${empty usuario}">
+						<button class="btn btn-success botoes-index" data-toggle="modal" data-target="#login">
+								<i class="material-icons">input</i>
+								Entrar
+						</button>
+					</c:if>
+				</div>
 			</div>
 		</div>
 		<div class="main-panel">
@@ -70,6 +94,7 @@
 				placeholder="Buscar Endereço">
 			<div id="map"></div>
 		</div>
+		<!-- import incluir estabelecimento-->
 		<div class="modal fade cadastrarEstabelecimento-modal" tabindex="-1"
 			role="dialog" aria-labelledby="cadastrarEstabelecimento">
 			<div class="modal-dialog modal-lg" role="document">
@@ -91,6 +116,14 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<jsp:include page="listar-estabelecimento.jsp" />
+				</div>
+			</div>
+		</div>
+		<!-- import do modal de login -->
+		<div class="modal fade" id="login">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<jsp:include page="login.jsp" />
 				</div>
 			</div>
 		</div>
