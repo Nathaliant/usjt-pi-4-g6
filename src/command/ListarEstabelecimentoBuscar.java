@@ -32,12 +32,9 @@ public class ListarEstabelecimentoBuscar implements Command
 			lista = estabelecimento.listarEstabelecimento();
 		} 	
 		session.setAttribute("lista", lista);    
-	    String objList = toJSON(lista);
-	    System.out.println(objList);
-        response.setContentType("application/json");
-        response.getWriter().write(objList);
-        RequestDispatcher dispatcher = null;
+	    RequestDispatcher dispatcher = null;
         dispatcher = request.getRequestDispatcher("listar-estabelecimento.jsp");
+        dispatcher.forward(request, response);
 	}	
 	String toJSON(ArrayList<Estabelecimento> lista) {
 	    Gson gson = new Gson();

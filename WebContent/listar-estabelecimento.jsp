@@ -14,43 +14,9 @@
 <jsp:include page="config.jsp" />
 <!--  JS  -->
 <script src="assets/js/listar-estabelecimento.js"></script>
-<div class="card">
-	<div class="card-header" data-background-color="blue">
-		<h4 class="title">Estabelecimentos</h4>
-		<p class="category">Veja todos os estabelecimentos já avaliados</p>
-	</div>
-	<div class="card-content">
-		<div id="main">
-			<form id="formBuscaEst">
-				<input type="hidden" name="command"
-					value="ListarEstabelecimentoBuscar" />
-				<div id="top" class="row">
-					<div class="col-xs-9">
-						<div class="input-group h2">
-							<input name="data[search]" class="form-control"
-								id="inputBuscaEstabelecimento" type="text"
-								placeholder="Pesquisar Estabelecimento"> <span
-								class="input-group-btn">
-								<button id="btnBuscarEstabelecimento"
-									class="btn btn-primary btn-fab btn-fab-mini btn-round"
-									type="submit">
-									<i class="material-icons">search</i>
-								</button>
-							</span>
-						</div>
-					</div>
 
-					<div class="col-xs-3">
-						<a href="estabelecimento.jsp"
-							class="btn btn-primary pull-right h2">Novo Estabelecimento</a>
-					</div>
-				</div>
-				<!-- /#top -->
-			</form>
-			<hr />
 			<c:if test="${not empty lista}">
 				<div id="list" class="row">
-
 					<div class="table-responsive col-xs-12">
 						<table class="table table-striped" cellspacing="0" cellpadding="0">
 							<thead>
@@ -113,10 +79,7 @@
 				</div>
 			</c:if>
 			<!-- /#bottom -->
-		</div>
-	</div>
-</div>
-
+		
 <!--   Core JS Files   -->
 <script src="assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
