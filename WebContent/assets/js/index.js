@@ -10,7 +10,7 @@ $(document).ready(function() {
 	}
 
 	iniciarMapa();
-
+	
 	$("#btnBuscarEstabelecimento").click(function(e) {
 		e.preventDefault();
 		var form = $("#formBuscaEst");

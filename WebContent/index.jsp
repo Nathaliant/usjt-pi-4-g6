@@ -24,7 +24,6 @@
 
 <!--  Arquivo de inclusao padrao de JS e CSS  -->
 <jsp:include page="config.jsp" />
-
 <!--  JS  -->
 <script src="assets/js/index.js"></script>
 <!--  Google Maps  -->
@@ -33,8 +32,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<div class="sidebar" data-color="blue"
-			data-image="assets/img/sidebar-1.jpg">
+		<div class="sidebar" data-color="blue">
 			<div class="logo">
 				<a href="index.jsp" class="simple-text"> Sem Barreiras </a>
 			</div>
