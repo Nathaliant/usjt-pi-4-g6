@@ -139,7 +139,7 @@ public class EstabelecimentoDAO
 		Estabelecimento estabelecimento;
 
 		ArrayList<Estabelecimento> lista = new ArrayList<>();
-		String sqlSelect = "SELECT id_estabelecimento, nome, endereco, horario_funcionamento, telefone, email, site from tbl_estabelecimento";
+		String sqlSelect = "SELECT id_estabelecimento, nome, endereco, lat, lng, horario_funcionamento, telefone, email, site from tbl_estabelecimento";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);)
@@ -152,6 +152,8 @@ public class EstabelecimentoDAO
 					estabelecimento.setId(rs.getInt("id_estabelecimento"));
 					estabelecimento.setNome(rs.getString("nome"));
 					estabelecimento.setEndereco(rs.getString("endereco"));
+					estabelecimento.setLat(rs.getFloat("lat"));
+					estabelecimento.setLng(rs.getFloat("lng"));
 					estabelecimento.setHorario(rs.getString("horario_funcionamento"));
 					estabelecimento.setTelefone(rs.getString("telefone"));
 					estabelecimento.setSite(rs.getString("site"));

@@ -1,7 +1,8 @@
 var geocoder;
 var map;
 var marker;
-var markers = [];
+var markers_google = [];
+var markers_est = [];
 
 $(document).ready(function() {
 
@@ -10,7 +11,7 @@ $(document).ready(function() {
 	}
 
 	iniciarMapa();
-	
+
 	$("#btnBuscarEstabelecimento").click(function(e) {
 		e.preventDefault();
 		var form = $("#formBuscaEst");
@@ -29,22 +30,23 @@ $(document).ready(function() {
 
 });
 
-//function toggleModal(idModalAtual, idModalDestino) {
+// function toggleModal(idModalAtual, idModalDestino) {
 //	
-//	var idModalDispose = "#" + idModalAtual; // faço isso para formatar o seletor do jquery (tudo o que se pega por id precisa do # assim como no css.
-//	var idModalOpen = "#" + idModalDestino;
+// var idModalDispose = "#" + idModalAtual; // faço isso para formatar o seletor
+// do jquery (tudo o que se pega por id precisa do # assim como no css.
+// var idModalOpen = "#" + idModalDestino;
 //
-//	$(idModalDispose).modal('hide');
+// $(idModalDispose).modal('hide');
 //
-//	$(idModalDispose).on('hidden.bs.modal', function() {
-//		$(idModalOpen).modal('show');
-//	});		
+// $(idModalDispose).on('hidden.bs.modal', function() {
+// $(idModalOpen).modal('show');
+// });
 //	
-//}
+// }
 
 function consoleInfo(id) {
-	$("#cadastroEndereco").val(markers[id].place_obj.formatted_address);
-	var place = markers[id].place_obj;
+	$("#cadastroEndereco").val(markers_google[id].place_obj.formatted_address);
+	var place = markers_google[id].place_obj;
 	var endereco = place.formatted_address;
 	var nome = place.name;
 	var latitude = place.geometry.location.lat();
@@ -65,7 +67,6 @@ function criaInfoWindow(marker, content) {
 
 	marker.addListener('click', function() {
 		infowindow.open(marker.get('map'), marker);
-
 	});
 }
 
@@ -74,6 +75,56 @@ function limpaInfoWindow(marker, content) {
 	google.maps.event.clearInstanceListeners(infoWindow);
 	infoWindow.close();
 	infoWindow = null;
+}
+
+function carregaMarkersEstabelecimentos(estabelecimentos) {
+
+	for ( var i in estabelecimentos) {
+		var icon_url = "assets/img/marker_icon.png";
+		var icone = {
+			url : icon_url,
+			size : new google.maps.Size(71, 71),
+			origin : new google.maps.Point(0, 0),
+			anchor : new google.maps.Point(17, 34),
+			scaledSize : new google.maps.Size(50, 50)
+		};
+		var marker = new google.maps.Marker({
+			map : map,
+			icon : icone,
+			title : estabelecimentos[i].nome,
+			position : {
+				lat : parseFloat(estabelecimentos[i].lat),
+				lng : parseFloat(estabelecimentos[i].lng)
+			},
+			clickable : true,
+			draggable : false,
+			estabelecimento_obj : estabelecimentos[i]
+		});
+		
+		markers_est.push(marker);
+	}
+
+}
+
+function buscaMarkersEstabelecimentos() {
+
+	var output = [];
+
+	$.ajax({
+		url : "controller.do",
+		data : {
+			"command" : "CarregarMarkersEstabelecimento"
+		},
+		method : "POST",
+		success : function(data) {
+			data = $.parseJSON(data);
+			for ( var d in data) {
+				var obj = $.parseJSON(data[d]);
+				output.push(obj);
+			}
+			carregaMarkersEstabelecimentos(output);
+		}
+	})
 }
 
 function iniciarMapa() {
@@ -86,7 +137,11 @@ function iniciarMapa() {
 	};
 
 	map = new google.maps.Map(document.getElementById("map"), options);
+	
 
+	// Adiciona markers dos estabelecimentos cadastrados
+	buscaMarkersEstabelecimentos();
+	
 	// Adiciona input ao mapa.
 	var input = document.getElementById('pac-input');
 	var searchBox = new google.maps.places.SearchBox(input);
@@ -95,8 +150,8 @@ function iniciarMapa() {
 	map.addListener('bounds_changed', function() {
 		searchBox.setBounds(map.getBounds());
 	});
-	// var markers = [];
-	// Aciona evento de mais informacoes para cara resultado do input
+	
+	// Aciona evento de mais informacoes para cada resultado do input
 	searchBox
 			.addListener(
 					'places_changed',
@@ -107,11 +162,11 @@ function iniciarMapa() {
 						}
 
 						// Apaga marcadores antigos
-						markers.forEach(function(marker) {
+						markers_google.forEach(function(marker) {
 							marker.setMap(null);
 						});
-						// Reseta array de markers
-						markers = [];
+						// Reseta array de markers_google
+						markers_google = [];
 
 						// ///////////////////////////////////////////////////
 						// Aciona chamada apropriada de acordo com
@@ -151,7 +206,8 @@ function iniciarMapa() {
 											place_obj : place
 										});
 
-										var marker_id = ((markers.push(marker)) - 1);
+										var marker_id = ((markers_google
+												.push(marker)) - 1);
 
 										var content = "<strong>"
 												+ place.name
@@ -217,7 +273,7 @@ function iniciarMapa() {
 													.extend(place.geometry.location);
 										}
 
-										markers.push(marker);
+										markers_google.push(marker);
 
 									});
 							map.fitBounds(bounds);
@@ -248,7 +304,8 @@ function iniciarMapa() {
 											place_obj : place
 										});
 
-										var marker_id = ((markers.push(marker)) - 1);
+										var marker_id = ((markers_google
+												.push(marker)) - 1);
 
 										var content = "<strong>"
 												+ place.name

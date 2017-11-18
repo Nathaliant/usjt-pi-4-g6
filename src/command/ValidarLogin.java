@@ -23,14 +23,14 @@ public class ValidarLogin implements Command
 		Usuario usuario = new Usuario();
 		usuario.setEmail(uEmail);
 
-		// Instancia um usuário service
+		// Instancia um usuï¿½rio service
 		UsuarioService us = new UsuarioService();
 
 		int emailExistente = us.emailExistente(uEmail);
 
 		if (emailExistente == 0)
 		{
-			retornaRequest(request, response, "Usuário não encontrado.", usuario, "login.jsp");
+			retornaRequest(request, response, "Usuï¿½rio nï¿½o encontrado.", usuario, "login.jsp");
 		} else if (emailExistente == 1)
 		{
 			usuario = us.senhaExistente(uEmail);
@@ -40,12 +40,13 @@ public class ValidarLogin implements Command
 			{
 				HttpSession session = request.getSession();
 				session.setAttribute("usuario", usuario);
+				System.out.println("foi");
 
 				retornaRequest(request, response, "Efetuando login.", usuario, "index.jsp");
 
 			} else if (senhaExistente != uSenha)
 			{
-				retornaRequest(request, response, "Senha inválida.", usuario, "login.jsp");
+				retornaRequest(request, response, "Senha invï¿½lida.", usuario, "login.jsp");
 			} else
 			{
 				retornaRequest(request, response, "Ocorreu um erro.", usuario, "login.jsp");

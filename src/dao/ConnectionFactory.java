@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class ConnectionFactory
 {
-	static String user = "";
-	static String password = "";
+	static String user = "usjt";
+	static String password = "usjt";
 	
 	static
 	{
