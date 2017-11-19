@@ -29,6 +29,10 @@
 <!--  Google Maps  -->
 <script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKUbkUKty6JH0D33M50VHXJTiYZSpc958&libraries=places"></script>
+<style>
+ .main-panel { position: relative; };
+ #over_map { position: absolute; top: 10px; left: 10px; z-index: 99; };
+</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -92,6 +96,7 @@
 			<input id="pac-input" class="controls" type="text"
 				placeholder="Buscar Endereço">
 			<div id="map"></div>
+			<div id="over_map"><input type="checkbox"/></div>
 		</div>
 		<div class="modal fade detalhesEstabelecimento-modal" tabindex="-1"
 			role="dialog" aria-labelledby="detalhesEstabelecimento">

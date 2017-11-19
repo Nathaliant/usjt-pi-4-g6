@@ -40,19 +40,6 @@ $(document).ready(function() {
 
 });
 
-// function toggleModal(idModalAtual, idModalDestino) {
-//	
-// var idModalDispose = "#" + idModalAtual; // faço isso para formatar o seletor
-// do jquery (tudo o que se pega por id precisa do # assim como no css.
-// var idModalOpen = "#" + idModalDestino;
-//
-// $(idModalDispose).modal('hide');
-//
-// $(idModalDispose).on('hidden.bs.modal', function() {
-// $(idModalOpen).modal('show');
-// });
-//	
-// }
 
 function consoleInfo(id) {
 	$("#cadastroEndereco").val(markers_google[id].place_obj.formatted_address);

@@ -45,7 +45,7 @@
 							<div class="form-group is-empty">
 								<label >Categoria</label> <input
 									type="text" class="form-control"
-									value="${estabelecimento.categoria }" readonly />
+									value="${estabelecimento.categoria}" readonly />
 							</div>
 						</div>
 						<div class="col-xs-4">
@@ -58,7 +58,7 @@
 						<div class="col-xs-4">
 							<div class="form-group is-empty">
 								<label >Telefone</label> <input type="text"
-									class="form-control" value="${estabelecimento.horario }"
+									class="form-control" value="${estabelecimento.telefone }"
 									readonly />
 							</div>
 						</div>
