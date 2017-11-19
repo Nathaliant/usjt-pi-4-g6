@@ -93,6 +93,13 @@
 				placeholder="Buscar Endereço">
 			<div id="map"></div>
 		</div>
+		<div class="modal fade detalhesEstabelecimento-modal" tabindex="-1"
+			role="dialog" aria-labelledby="detalhesEstabelecimento">
+			<div class="modal-dialog modal-lg" role="document" style="width: 70%;">
+				<div class="modal-content" id="body-detalhes">
+				</div>
+			</div>
+		</div>
 		<!-- import incluir estabelecimento-->
 		<div class="modal fade cadastrarEstabelecimento-modal" tabindex="-1"
 			role="dialog" aria-labelledby="cadastrarEstabelecimento">

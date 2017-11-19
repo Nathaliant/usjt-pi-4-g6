@@ -9,6 +9,13 @@ $(document).ready(function() {
 	if ($('.main-panel > .content').length == 0) {
 		$('.main-panel').css('height', '100%');
 	}
+	
+	$('.detalhesEstabelecimento-modal').on('show.bs.modal', function () {
+		console.log($(this));
+	    $(this).find('.modal-dialog').css({width:'auto',
+	                               height:'auto', 
+	                              'max-height':'100%'});
+	});
 
 	iniciarMapa();
 
@@ -60,6 +67,22 @@ function consoleInfo(id) {
 	$(".cadastrarEstabelecimento-modal").modal("show")
 }
 
+function exibirDetalhesEstabelecimento(id){
+	$.ajax({
+		url : "controller.do",
+		data : {
+			"command" : "ListarAvaliacoesPorEstabelecimento",
+			"id": id
+		},
+		method : "GET",
+		success : function(data) {
+			$("#body-detalhes").html(data);
+		
+			$(".detalhesEstabelecimento-modal").modal("show");
+		}
+	})
+}
+
 function criaInfoWindow(marker, content) {
 	var infowindow = new google.maps.InfoWindow({
 		content : content
@@ -100,6 +123,22 @@ function carregaMarkersEstabelecimentos(estabelecimentos) {
 			draggable : false,
 			estabelecimento_obj : estabelecimentos[i]
 		});
+		
+		var marker_id = estabelecimentos[i].id;
+
+		var content = "<strong>"
+				+ estabelecimentos[i].nome
+				+ "</strong><br>"
+				+ "<p>"
+				+ estabelecimentos[i].endereco
+				+ "</p>"
+				+ "<a href='javascript:void(0)' onclick='exibirDetalhesEstabelecimento("
+				+ marker_id
+				+ ")' class='infoview-cadastrar' ref="
+				+ marker_id
+				+ ">Visualizar detalhes</a>";
+
+		criaInfoWindow(marker, content);
 		
 		markers_est.push(marker);
 	}
@@ -333,7 +372,7 @@ function iniciarMapa() {
 									});
 							map.fitBounds(bounds);
 						}
-						// /////////////////////////////////////////////////////
+						///////////////////////////////////////////////////////
 
 					});
 
