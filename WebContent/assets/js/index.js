@@ -3,18 +3,21 @@ var map;
 var marker;
 var markers_google = [];
 var markers_est = [];
+var infowindow = null;
 
 $(document).ready(function() {
 
 	if ($('.main-panel > .content').length == 0) {
 		$('.main-panel').css('height', '100%');
 	}
-	
-	$('.detalhesEstabelecimento-modal').on('show.bs.modal', function () {
+
+	$('.detalhesEstabelecimento-modal').on('show.bs.modal', function() {
 		console.log($(this));
-	    $(this).find('.modal-dialog').css({width:'auto',
-	                               height:'auto', 
-	                              'max-height':'100%'});
+		$(this).find('.modal-dialog').css({
+			width : 'auto',
+			height : 'auto',
+			'max-height' : '100%'
+		});
 	});
 
 	iniciarMapa();
@@ -67,28 +70,32 @@ function consoleInfo(id) {
 	$(".cadastrarEstabelecimento-modal").modal("show")
 }
 
-function exibirDetalhesEstabelecimento(id){
+function exibirDetalhesEstabelecimento(id) {
 	$.ajax({
 		url : "controller.do",
 		data : {
 			"command" : "ListarAvaliacoesPorEstabelecimento",
-			"id": id
+			"id" : id
 		},
 		method : "GET",
 		success : function(data) {
 			$("#body-detalhes").html(data);
-		
+
 			$(".detalhesEstabelecimento-modal").modal("show");
 		}
 	})
 }
 
 function criaInfoWindow(marker, content) {
-	var infowindow = new google.maps.InfoWindow({
-		content : content
-	});
 
 	marker.addListener('click', function() {
+
+		if (infowindow) {
+			infowindow.close();
+		}
+		infowindow = new google.maps.InfoWindow({
+			content : content
+		});
 		infowindow.open(marker.get('map'), marker);
 	});
 }
@@ -123,7 +130,7 @@ function carregaMarkersEstabelecimentos(estabelecimentos) {
 			draggable : false,
 			estabelecimento_obj : estabelecimentos[i]
 		});
-		
+
 		var marker_id = estabelecimentos[i].id;
 
 		var content = "<strong>"
@@ -133,13 +140,11 @@ function carregaMarkersEstabelecimentos(estabelecimentos) {
 				+ estabelecimentos[i].endereco
 				+ "</p>"
 				+ "<a href='javascript:void(0)' onclick='exibirDetalhesEstabelecimento("
-				+ marker_id
-				+ ")' class='infoview-cadastrar' ref="
-				+ marker_id
+				+ marker_id + ")' class='infoview-cadastrar' ref=" + marker_id
 				+ ">Visualizar detalhes</a>";
 
 		criaInfoWindow(marker, content);
-		
+
 		markers_est.push(marker);
 	}
 
@@ -176,11 +181,10 @@ function iniciarMapa() {
 	};
 
 	map = new google.maps.Map(document.getElementById("map"), options);
-	
 
 	// Adiciona markers dos estabelecimentos cadastrados
 	buscaMarkersEstabelecimentos();
-	
+
 	// Adiciona input ao mapa.
 	var input = document.getElementById('pac-input');
 	var searchBox = new google.maps.places.SearchBox(input);
@@ -189,7 +193,7 @@ function iniciarMapa() {
 	map.addListener('bounds_changed', function() {
 		searchBox.setBounds(map.getBounds());
 	});
-	
+
 	// Aciona evento de mais informacoes para cada resultado do input
 	searchBox
 			.addListener(
@@ -372,7 +376,7 @@ function iniciarMapa() {
 									});
 							map.fitBounds(bounds);
 						}
-						///////////////////////////////////////////////////////
+						// /////////////////////////////////////////////////////
 
 					});
 
