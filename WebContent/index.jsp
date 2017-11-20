@@ -30,15 +30,25 @@
 <script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKUbkUKty6JH0D33M50VHXJTiYZSpc958&libraries=places"></script>
 <style>
- .main-panel { position: relative; };
- #over_map { position: absolute; top: 10px; left: 10px; z-index: 99; };
+.main-panel {
+	position: relative;
+}
+
+;
+#over_map {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 99;
+}
+;
 </style>
 </head>
 <body>
 	<div class="wrapper">
 		<div class="sidebar" data-color="blue">
-			<div class="logo">
-				<a href="index.jsp" class="simple-text"> Sem Barreiras </a>
+			<div class="logo img-responsive">
+				<img src="assets\img\logo_baixa1.png">
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
@@ -96,13 +106,15 @@
 			<input id="pac-input" class="controls" type="text"
 				placeholder="Buscar Endereço">
 			<div id="map"></div>
-			<div id="over_map"><input type="checkbox"/></div>
+			<div id="over_map">
+				<input type="checkbox" />
+			</div>
 		</div>
 		<div class="modal fade detalhesEstabelecimento-modal" tabindex="-1"
 			role="dialog" aria-labelledby="detalhesEstabelecimento">
-			<div class="modal-dialog modal-lg" role="document" style="width: 70%;">
-				<div class="modal-content" id="body-detalhes">
-				</div>
+			<div class="modal-dialog modal-lg" role="document"
+				style="width: 70%;">
+				<div class="modal-content" id="body-detalhes"></div>
 			</div>
 		</div>
 		<!-- import incluir estabelecimento-->
@@ -132,7 +144,8 @@
 		</div>
 		<!-- import do modal de listar locais -->
 		<div class="modal fade listarEstabelecimento-modal" tabindex="-1"
-			role="dialog" aria-labelledby="istarEstabelecimento" id="listar-estabelecimento">
+			role="dialog" aria-labelledby="istarEstabelecimento"
+			id="listar-estabelecimento">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="card">
@@ -178,7 +191,7 @@
 					</div>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</div>
 </body>
 </html>
