@@ -37,4 +37,10 @@ public class UsuarioService
 		{
 			 return dao.senhaExistente(email);
 		} 
+		
+		public int atualizarSenha(Usuario usuario)
+		   {
+		   
+		      return dao.atualizarSenha(usuario);
+		   }
 	}

@@ -184,5 +184,32 @@ public class UsuarioDAO
 		}
 		return usuario;
 	}
+	
+	
+	public int atualizarSenha(Usuario usuario)
+	   {
+	      String sqlUpdate = "UPDATE tbl_usuario SET senha=? WHERE email=?";
+	      try (Connection conn = ConnectionFactory.obtemConexao();
+	      		PreparedStatement stm = conn.prepareStatement(sqlUpdate);)
+	      {
+	         stm.setString(1, usuario.getSenha());
+	         stm.setString(2, usuario.getEmail());
+	         stm.executeUpdate();
+	         if (stm.executeUpdate() > 0)
+	         {
+	            return 0;
+	         } 
+	         else
+	         {
+	            return 1;
+	         }
+	      
+	      } 
+	      catch (Exception e)
+	      {
+	         e.printStackTrace();
+	      }
+	      return -1;
+	   }
 
 }
