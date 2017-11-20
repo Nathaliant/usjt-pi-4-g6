@@ -137,10 +137,10 @@ INSERT INTO tbl_usuario(nome, sobrenome, email, senha, foto_perfil) VALUES ('Nat
 INSERT INTO tbl_usuario(nome, sobrenome, email, senha, foto_perfil) VALUES ('Brasil', 'Marcelo', 'brasil@marcelo.com', '1234', '');
 
 -- preencher estabelecimento
-INSERT INTO tbl_estabelecimento(nome, endereco, lat, lng, horario_funcionamento, telefone, email, site,tbl_categoria_id_categoria) VALUES ('Casa do Pão de Queijo', 'Rua do pão de queijo', 10.123,12.234,'24horas por dia 7 dias por semana','1192349934','teste1@gmail.com','www,teste1.com','1');
-INSERT INTO tbl_estabelecimento(nome, endereco, lat, lng, horario_funcionamento, telefone, email, site,tbl_categoria_id_categoria) VALUES ('Cinema do Pão de Queijo', 'Rua do pão de queijo', 10.123,12.234,'24horas por dia 7 dias por semana','1192349934','teste1@gmail.com','www,teste1.com','2');
-INSERT INTO tbl_estabelecimento(nome, endereco, lat, lng, horario_funcionamento, telefone, email, site,tbl_categoria_id_categoria) VALUES ('Parque do Pão de Queijo', 'Rua do pão de queijo', 10.123,12.234,'24horas por dia 7 dias por semana','1192349934','teste1@gmail.com','www,teste1.com','3');
-INSERT INTO tbl_estabelecimento(nome, endereco, lat, lng, horario_funcionamento, telefone, email, site,tbl_categoria_id_categoria) VALUES ('Parque da Pizza', 'Rua da Pizza', 10.123,12.234,'24horas por dia 7 dias por semana','1192349934','teste1@gmail.com','www,teste1.com','3');
+INSERT INTO tbl_estabelecimento(nome, endereco, lat, lng, horario_funcionamento, telefone, email, site,tbl_categoria_id_categoria) VALUES ('Casa do Pão de Queijo', 'Avenida 9 de Julho', 10.123,12.234,'8horas por dia - 5 dias por semana','1192349934','teste1@gmail.com','www,teste1.com','1');
+INSERT INTO tbl_estabelecimento(nome, endereco, lat, lng, horario_funcionamento, telefone, email, site,tbl_categoria_id_categoria) VALUES ('Cinemark', 'Avenida Ibirapuera', 10.123,12.234,'24horas por dia - 5 dias por semana','1192349934','teste1@gmail.com','www,teste1.com','2');
+INSERT INTO tbl_estabelecimento(nome, endereco, lat, lng, horario_funcionamento, telefone, email, site,tbl_categoria_id_categoria) VALUES ('Parque Professor Abraão', 'Avenida Professor Abraão Ribeiro', 10.123,12.234,'24horas por dia - 6 dias por semana','1192349934','teste1@gmail.com','www,teste1.com','3');
+INSERT INTO tbl_estabelecimento(nome, endereco, lat, lng, horario_funcionamento, telefone, email, site,tbl_categoria_id_categoria) VALUES ('Restaurante Cruzeiro', 'Avenida Cruzeiro do Sul', 10.123,12.234,'24horas por dia - 7 dias por semana','1192349934','teste1@gmail.com','www,teste1.com','1');
 
 -- preencher avaliação
 INSERT INTO tbl_avaliacao(nota_acesso_cadeirante,nota_sanitario_cadeirante,nota_instrucao_braile,nota_sinalizacao_piso,media_nota,comentario,tbl_usuario_Id_usuario,tbl_estabelecimento_id_estabelecimento,tbl_estabelecimento_tbl_categoria_id_categoria) VALUES (3, 3, 3, 3, 3, 'Lugarzinho nota 3', 1, 1, 1);
